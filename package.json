@@ -1,0 +1,9 @@
+{
+  "name": "enset-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Scripts utilitaires racine pour Mourchid — assistant académique ENSET Mohammedia (optimisation des vidéos de démo, etc.).",
+  "scripts": {
+    "optimize-videos": "node scripts/optimize-videos.js"
+  }
+}

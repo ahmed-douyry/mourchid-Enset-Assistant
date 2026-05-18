@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+backend/.venv/
+backend/.langgraph_api/
+.env
+*.sqlite3
+
+# Node
+node_modules/
+frontend/dist/
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Data / models (keep samples tracked)
+backend/app/data/raw/*
+!backend/app/data/raw/.gitkeep
+backend/app/data/processed/traces/*
+!backend/app/data/processed/traces/.gitkeep
+
+# Raw video sources used to regenerate docs/videos/ (kept out of repo)
+videos/
+*.mkv
+
+# OS
+.DS_Store
