@@ -1,0 +1,123 @@
+{
+  "documents": {
+    "sample_attestation_demo": {
+      "filename": "attestation_demo.md",
+      "path": "/home/douyry/enset-assistant/backend/app/data/samples/attestation_demo.md",
+      "chunk_count": 1,
+      "metadata": {
+        "document_id": "sample_attestation_demo",
+        "filename": "attestation_demo.md",
+        "country": "Morocco",
+        "language": "fr",
+        "source": "attestation_demo.md",
+        "title": "Attestation Demo",
+        "domain": "scolarite",
+        "document_type": "procedure_demo",
+        "url": "https://www.demo.local/enset-attestation"
+      },
+      "status": "indexed"
+    },
+    "sample_bourse_demo": {
+      "filename": "bourse_demo.md",
+      "path": "/home/douyry/enset-assistant/backend/app/data/samples/bourse_demo.md",
+      "chunk_count": 1,
+      "metadata": {
+        "document_id": "sample_bourse_demo",
+        "filename": "bourse_demo.md",
+        "country": "Morocco",
+        "language": "fr",
+        "source": "bourse_demo.md",
+        "title": "Bourse Demo",
+        "domain": "bourses",
+        "document_type": "procedure_demo",
+        "url": "https://www.demo.local/enset-bourse"
+      },
+      "status": "indexed"
+    },
+    "sample_concours_acces_demo": {
+      "filename": "concours_acces_demo.md",
+      "path": "/home/douyry/enset-assistant/backend/app/data/samples/concours_acces_demo.md",
+      "chunk_count": 1,
+      "metadata": {
+        "document_id": "sample_concours_acces_demo",
+        "filename": "concours_acces_demo.md",
+        "country": "Morocco",
+        "language": "fr",
+        "source": "concours_acces_demo.md",
+        "title": "Concours Acces Demo",
+        "domain": "admission",
+        "document_type": "procedure_demo",
+        "url": "https://www.demo.local/enset-concours"
+      },
+      "status": "indexed"
+    },
+    "sample_filieres_enset_demo": {
+      "filename": "filieres_enset_demo.md",
+      "path": "/home/douyry/enset-assistant/backend/app/data/samples/filieres_enset_demo.md",
+      "chunk_count": 1,
+      "metadata": {
+        "document_id": "sample_filieres_enset_demo",
+        "filename": "filieres_enset_demo.md",
+        "country": "Morocco",
+        "language": "fr",
+        "source": "filieres_enset_demo.md",
+        "title": "Filieres Enset Demo",
+        "domain": "filieres",
+        "document_type": "guide_demo",
+        "url": "https://www.demo.local/enset-filieres"
+      },
+      "status": "indexed"
+    },
+    "sample_inscription_demo": {
+      "filename": "inscription_demo.md",
+      "path": "/home/douyry/enset-assistant/backend/app/data/samples/inscription_demo.md",
+      "chunk_count": 1,
+      "metadata": {
+        "document_id": "sample_inscription_demo",
+        "filename": "inscription_demo.md",
+        "country": "Morocco",
+        "language": "fr",
+        "source": "inscription_demo.md",
+        "title": "Inscription Demo",
+        "domain": "scolarite",
+        "document_type": "procedure_demo",
+        "url": "https://www.demo.local/enset-inscription"
+      },
+      "status": "indexed"
+    },
+    "sample_stage_pfe_demo": {
+      "filename": "stage_pfe_demo.md",
+      "path": "/home/douyry/enset-assistant/backend/app/data/samples/stage_pfe_demo.md",
+      "chunk_count": 1,
+      "metadata": {
+        "document_id": "sample_stage_pfe_demo",
+        "filename": "stage_pfe_demo.md",
+        "country": "Morocco",
+        "language": "fr",
+        "source": "stage_pfe_demo.md",
+        "title": "Stage Pfe Demo",
+        "domain": "stages",
+        "document_type": "procedure_demo",
+        "url": "https://www.demo.local/enset-stage-pfe"
+      },
+      "status": "indexed"
+    },
+    "sample_vie_etudiante_demo": {
+      "filename": "vie_etudiante_demo.md",
+      "path": "/home/douyry/enset-assistant/backend/app/data/samples/vie_etudiante_demo.md",
+      "chunk_count": 1,
+      "metadata": {
+        "document_id": "sample_vie_etudiante_demo",
+        "filename": "vie_etudiante_demo.md",
+        "country": "Morocco",
+        "language": "fr",
+        "source": "vie_etudiante_demo.md",
+        "title": "Vie Etudiante Demo",
+        "domain": "vie_etudiante",
+        "document_type": "guide_demo",
+        "url": "https://www.demo.local/enset-vie-etudiante"
+      },
+      "status": "indexed"
+    }
+  }
+}
