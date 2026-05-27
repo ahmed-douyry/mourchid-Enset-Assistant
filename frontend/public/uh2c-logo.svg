@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Universit� Hassan II de Casablanca">
+  <circle cx="24" cy="24" r="22" fill="#ffffff" stroke="#0f5132" stroke-width="2"/>
+  <circle cx="24" cy="24" r="17" fill="none" stroke="#0f5132" stroke-width="1"/>
+  <path d="M24 11 L33 16 L24 21 L15 16 Z" fill="#0f5132"/>
+  <rect x="20" y="20" width="8" height="10" fill="#b8860b"/>
+  <path d="M16 30 h16 v2 h-16 z" fill="#0f5132"/>
+  <text x="24" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="700" fill="#0f5132">UH2C</text>
+</svg>
