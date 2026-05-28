@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 243 244 246;
+    --surface: 255 255 255;
+    --surface-muted: 249 250 251;
+    --text: 17 24 39;
+    --text-muted: 107 114 128;
+    /* Brand purple — image 1 & 2 */
+    --primary: 107 33 168;
+    --primary-foreground: 255 255 255;
+    --violet: 124 58 237;
+    --indigo: 99 102 241;
+    --accent: 124 58 237;
+    --accent-soft: 237 233 254;
+    --accent-teal: 5 150 105;
+    --gold-soft: 192 132 252;
+    --border: 229 231 235;
+    --success: 16 185 129;
+    --warning: 245 158 11;
+    --danger: 239 68 68;
+    --radius: 0.875rem;
+    --shadow-soft: 0 1px 2px rgb(107 33 168 / 0.06), 0 8px 24px rgb(107 33 168 / 0.08);
+    --shadow-card: 0 4px 24px rgb(107 33 168 / 0.12);
+    /* Linear RGB gradients */
+    --gradient-hero: linear-gradient(
+      135deg,
+      rgb(49, 46, 129) 0%,
+      rgb(109, 40, 217) 32%,
+      rgb(167, 139, 250) 58%,
+      rgb(59, 130, 246) 100%
+    );
+    --gradient-brand: linear-gradient(135deg, rgb(107, 33, 168) 0%, rgb(124, 58, 237) 45%, rgb(59, 130, 246) 100%);
+    --gradient-user-bubble: linear-gradient(135deg, rgb(107, 33, 168) 0%, rgb(139, 92, 246) 50%, rgb(59, 130, 246) 100%);
+    --gradient-cta-text: linear-gradient(90deg, rgb(192, 132, 252) 0%, rgb(129, 140, 248) 50%, rgb(59, 130, 246) 100%);
+    --gradient-progress: linear-gradient(90deg, rgb(107, 33, 168), rgb(139, 92, 246), rgb(59, 130, 246));
+  }
+
+  .dark {
+    --bg: 15 10 30;
+    --surface: 30 20 50;
+    --surface-muted: 40 28 65;
+    --text: 243 244 246;
+    --text-muted: 156 163 175;
+    --primary: 167 139 250;
+    --primary-foreground: 15 10 30;
+    --accent: 192 132 252;
+    --accent-soft: 46 16 101;
+    --border: 55 48 163;
+    --gradient-hero: linear-gradient(
+      135deg,
+      rgb(30, 27, 75) 0%,
+      rgb(76, 29, 149) 35%,
+      rgb(109, 40, 217) 60%,
+      rgb(37, 99, 235) 100%
+    );
+    --gradient-brand: linear-gradient(135deg, rgb(124, 58, 237) 0%, rgb(167, 139, 250) 50%, rgb(96, 165, 250) 100%);
+    --gradient-user-bubble: linear-gradient(135deg, rgb(124, 58, 237) 0%, rgb(167, 139, 250) 50%, rgb(59, 130, 246) 100%);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer utilities {
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-brand {
+    background: var(--gradient-brand);
+  }
+
+  .bg-gradient-user {
+    background: var(--gradient-user-bubble);
+  }
+
+  .bg-gradient-progress {
+    background: var(--gradient-progress);
+  }
+
+  .text-gradient-brand {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-cta {
+    background: var(--gradient-cta-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    @apply bg-surface/85 backdrop-blur-xl;
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgb(var(--surface-muted)) 0%,
+      rgb(var(--accent-soft)) 50%,
+      rgb(var(--surface-muted)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  .cursor-blink::after {
+    content: "▋";
+    animation: blink 1s step-end infinite;
+    color: rgb(var(--violet));
+    margin-left: 2px;
+  }
+
+  .shell-app {
+    background:
+      radial-gradient(ellipse 80% 50% at 10% -10%, rgb(167 139 250 / 0.18), transparent),
+      radial-gradient(ellipse 60% 40% at 90% 100%, rgb(59 130 246 / 0.12), transparent),
+      rgb(var(--bg));
+  }
+
+  .sidebar-panel {
+    @apply rounded-3xl shadow-card ring-1 ring-border/40;
+    background: rgb(var(--surface) / 0.72);
+    backdrop-filter: blur(20px);
+  }
+
+  .dark .sidebar-panel {
+    background: rgb(var(--surface) / 0.55);
+  }
+
+  .topbar-capsule {
+    @apply rounded-3xl shadow-soft ring-1 ring-border/40;
+    background: rgb(var(--surface) / 0.75);
+    backdrop-filter: blur(16px);
+  }
+
+  .main-surface {
+    @apply rounded-3xl shadow-card ring-1 ring-border/30;
+    background: rgb(var(--surface) / 0.88);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Texte sur fonds dégradés / foncés — lisible en mode clair et sombre */
+  .on-dark {
+    @apply text-white;
+  }
+
+  .on-dark-muted {
+    @apply text-white/80;
+  }
+
+  .on-light {
+    @apply text-slate-900 dark:text-slate-50;
+  }
+
+  .on-light-muted {
+    @apply text-slate-600 dark:text-slate-400;
+  }
+
+  .legal-list > li {
+    @apply flex gap-2 pl-1;
+  }
+
+  .legal-list > li::before {
+    content: "";
+    @apply mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-brand;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
