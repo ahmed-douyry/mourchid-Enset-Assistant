@@ -37,6 +37,7 @@ RAG agentic en français · Orchestration **LangGraph** · LLM local via **Ollam
 - [Tests](#tests)
 - [Limites & éthique](#limites--éthique)
 - [Dépannage](#dépannage)
+- [Publier sur GitHub (activer les images jsDelivr)](#publier-sur-github-activer-les-images-jsdelivr)
 - [Licence](#licence)
 
 ---
@@ -72,27 +73,77 @@ Le **backend Python** est géré avec **[uv](https://docs.astral.sh/uv/)** (`pyp
 
 ## Captures d'écran
 
-Le dossier [`screens/`](screens/) contient des aperçus de l'interface **Mourchid** (frontend React). Les images sont servies via le CDN [jsDelivr](https://www.jsdelivr.com/) pour un affichage fiable sur GitHub.
+> Images servies via **[jsDelivr CDN](https://www.jsdelivr.com/)** — format garanti d'affichage sur GitHub.
 
-> **Remarque** : remplacez `ahmed-douyry/enset-assistant@main` par le slug réel de votre dépôt GitHub (`<utilisateur>/<repo>@<branche>`) une fois le projet poussé.
+---
 
-### Assistant académique & dictée vocale
+### 🎓 Assistant académique
 
-| ![Assistant — chat RAG en streaming](https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/assistant.png) | ![Dictée vocale — transcription Whisper](https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/transcription.png) |
-| :---: | :---: |
-| **Assistant** — Chat RAG en streaming SSE, suggestions de questions, sélecteur de niveau (Simple / Détaillé / Technique / Procédure) et panneau « Analyse & sources ». | **Dictée vocale** — Enregistrement micro, **barre de fréquence** en temps réel et **transcription Whisper** côté serveur insérée dans la zone de saisie. |
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/assistant.png" alt="Assistant — chat RAG en streaming SSE" width="90%" />
+  <br/>
+  <sub><b>Assistant</b> — Chat RAG en streaming SSE · Suggestions de questions · Sélecteur de niveau (Simple / Détaillé / Technique / Procédure) · Panneau « Analyse &amp; sources » avec citations et score de confiance.</sub>
+</div>
 
-### Quiz concours & Documents
+---
 
-| ![Quiz concours généré par l'IA](https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/QuizCncr.png) | ![Documents — import et indexation](https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/document.png) |
-| :---: | :---: |
-| **Quiz concours** — Quiz **généré par l'IA** à chaque essai, choix de la filière et de la difficulté, correction commentée et score final. | **Documents** — Upload PDF / Markdown / TXT, « Réindexer tout » et statut d'indexation par fichier. |
+### 🎙️ Dictée vocale (Whisper côté serveur)
 
-### Workflow, Tableau de bord & Résumé
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/transcription.png" alt="Dictée vocale — barre de fréquence et transcription Whisper" width="90%" />
+  <br/>
+  <sub><b>Dictée vocale</b> — Enregistrement micro avec <b>barre de fréquence</b> en temps réel (Web Audio API) · Transcription automatique via <b>Whisper local</b> (serveur) · Insertion du texte dans la zone de saisie.</sub>
+</div>
 
-| ![Workflow — trace multi-agent](https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/workFlow.png) | ![Tableau de bord](https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/dashboard.png) | ![Résumé structuré](https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/resumedocsEnset.png) |
-| :---: | :---: | :---: |
-| **Workflow** — Trace d'exécution multi-agent par `conversationId` (pipeline + aperçu JSON de l'état). | **Tableau de bord** — Indicateurs d'usage, modèles utilisés et historique des questions. | **Résumé docs** — Synthèse structurée (points clés, obligations, risques) via `POST /api/summarize`. |
+---
+
+### 🧠 Quiz concours généré par l'IA
+
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/QuizCncr.png" alt="Quiz concours IA — sélection filière et difficulté" width="90%" />
+  <br/>
+  <sub><b>Quiz concours</b> — QCM généré à chaque essai par le LLM · Choix de la filière (Génie Informatique, Électrique, Mécanique) et de la difficulté · Correction commentée et score final.</sub>
+</div>
+
+---
+
+### 📄 Gestion documentaire
+
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/document.png" alt="Documents — import et indexation dans Qdrant" width="90%" />
+  <br/>
+  <sub><b>Documents</b> — Upload PDF / Markdown / TXT · Réindexation globale · Statut d'indexation par fichier (chunks dans Qdrant).</sub>
+</div>
+
+---
+
+### 🔀 Workflow multi-agent (LangGraph)
+
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/workFlow.png" alt="Workflow — pipeline multi-agent LangGraph" width="90%" />
+  <br/>
+  <sub><b>Workflow</b> — Visualisation de la trace d'exécution par <code>conversationId</code> · Pipeline complet (classifyQuery → RAG → agent → citations → verification → finalResponse) · Aperçu JSON de l'état.</sub>
+</div>
+
+---
+
+### 📊 Tableau de bord
+
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/dashboard.png" alt="Tableau de bord — statistiques d'usage" width="90%" />
+  <br/>
+  <sub><b>Dashboard</b> — Statistiques d'utilisation · Modèles actifs (LLM, embeddings, base vectorielle) · Historique des dernières questions.</sub>
+</div>
+
+---
+
+### 📝 Résumé structuré de documents
+
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/resumedocsEnset.png" alt="Résumé structuré — points clés et obligations" width="90%" />
+  <br/>
+  <sub><b>Résumé docs</b> — Synthèse générée par le LLM · Points clés, obligations, risques et articles de référence via <code>POST /api/summarize</code>.</sub>
+</div>
 
 ---
 
@@ -328,12 +379,42 @@ Les noms de tests respectent la convention : préfixe `test_` puis **camelCase**
 | Premier lancement lent | Téléchargement des poids SentenceTransformers + construction de la collection Qdrant. |
 | Mémoire / GPU | Pour les LLM volumineux, privilégier des tailles 7B–8B sur GPU ou machine suffisante. |
 | `externally-managed-environment` (PEP 668) | uv crée un `.venv` projet — n'installez pas dans le Python système. |
-| Balise `<video>` du README invisible sur GitHub | Comportement attendu : GitHub ne rend pas `<video>` dans les README (uniquement dans les *issues* / commentaires de PR). Les GIFs servent à la preview inline ; le `.mp4` reste téléchargeable pour le HD. |
-| Captures d’écran qui ne s’affichent pas dans le README | 1) Forcer le rafraîchissement (`Ctrl + F5`) pour vider le cache du proxy `camo.githubusercontent.com`. 2) Vérifier qu’aucun adblocker / proxy d’entreprise ne bloque `cdn.jsdelivr.net` et `raw.githubusercontent.com`. |
+| Images jsDelivr invisibles | Le dépôt doit être **public sur GitHub** et les `screens/*.png` doivent être **commités et poussés** (voir commandes ci-dessous). |
+| Cache jsDelivr obsolète | jsDelivr met en cache ~7 jours. Pour forcer : remplacez `@main` par le SHA du commit (`@a1b2c3d`). |
+| Bloqueur de pub | Vérifiez qu'aucune extension ne bloque `cdn.jsdelivr.net`. |
 
 ### LangGraph CLI & `langgraph.json`
 
 Le fichier [`backend/langgraph.json`](backend/langgraph.json) référence `"dependencies": ["."]` : le CLI résout le projet à partir de `pyproject.toml`. Lancez toujours `langgraph dev` via **`uv run`** depuis `backend/`.
+
+---
+
+## Publier sur GitHub (activer les images jsDelivr)
+
+Les images du README sont servies via **jsDelivr CDN** (`cdn.jsdelivr.net/gh/…`). Pour qu'elles s'affichent, le dépôt doit être **public sur GitHub** et les captures doivent être poussées. Exécutez ces commandes une seule fois :
+
+```bash
+cd /home/douyry/enset-assistant
+
+# 1. Initialiser le dépôt git
+git init
+git branch -M main
+
+# 2. Créer le dépôt sur GitHub (remplacez le token par le vôtre)
+#    Ou créez-le manuellement sur https://github.com/new (nom : enset-assistant, public)
+
+# 3. Ajouter le remote et pousser
+git remote add origin https://github.com/ahmed-douyry/enset-assistant.git
+git add README.md screens/ docs/ frontend/ backend/ docker-compose.yml .env.example .gitignore
+git commit -m "feat: initial commit — Mourchid assistant académique ENSET"
+git push -u origin main
+```
+
+Une fois poussé, les 7 captures apparaissent automatiquement dans le README via :
+
+```
+https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/<fichier>.png
+```
 
 ---
 
