@@ -80,7 +80,7 @@ Le **backend Python** est géré avec **[uv](https://docs.astral.sh/uv/)** (`pyp
 ### 🎓 Assistant académique
 
 <div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/assistant.png" alt="Assistant — chat RAG en streaming SSE" width="90%" />
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/mourchid-Enset-Assistant@main/screens/assistant.png" alt="Assistant — chat RAG en streaming SSE" width="90%" />
   <br/>
   <sub><b>Assistant</b> — Chat RAG en streaming SSE · Suggestions de questions · Sélecteur de niveau (Simple / Détaillé / Technique / Procédure) · Panneau « Analyse &amp; sources » avec citations et score de confiance.</sub>
 </div>
@@ -90,7 +90,7 @@ Le **backend Python** est géré avec **[uv](https://docs.astral.sh/uv/)** (`pyp
 ### 🎙️ Dictée vocale (Whisper côté serveur)
 
 <div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/transcription.png" alt="Dictée vocale — barre de fréquence et transcription Whisper" width="90%" />
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/mourchid-Enset-Assistant@main/screens/transcription.png" alt="Dictée vocale — barre de fréquence et transcription Whisper" width="90%" />
   <br/>
   <sub><b>Dictée vocale</b> — Enregistrement micro avec <b>barre de fréquence</b> en temps réel (Web Audio API) · Transcription automatique via <b>Whisper local</b> (serveur) · Insertion du texte dans la zone de saisie.</sub>
 </div>
@@ -100,7 +100,7 @@ Le **backend Python** est géré avec **[uv](https://docs.astral.sh/uv/)** (`pyp
 ### 🧠 Quiz concours généré par l'IA
 
 <div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/QuizCncr.png" alt="Quiz concours IA — sélection filière et difficulté" width="90%" />
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/mourchid-Enset-Assistant@main/screens/QuizCncr.png" alt="Quiz concours IA — sélection filière et difficulté" width="90%" />
   <br/>
   <sub><b>Quiz concours</b> — QCM généré à chaque essai par le LLM · Choix de la filière (Génie Informatique, Électrique, Mécanique) et de la difficulté · Correction commentée et score final.</sub>
 </div>
@@ -110,7 +110,7 @@ Le **backend Python** est géré avec **[uv](https://docs.astral.sh/uv/)** (`pyp
 ### 📄 Gestion documentaire
 
 <div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/document.png" alt="Documents — import et indexation dans Qdrant" width="90%" />
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/mourchid-Enset-Assistant@main/screens/document.png" alt="Documents — import et indexation dans Qdrant" width="90%" />
   <br/>
   <sub><b>Documents</b> — Upload PDF / Markdown / TXT · Réindexation globale · Statut d'indexation par fichier (chunks dans Qdrant).</sub>
 </div>
@@ -120,7 +120,7 @@ Le **backend Python** est géré avec **[uv](https://docs.astral.sh/uv/)** (`pyp
 ### 🔀 Workflow multi-agent (LangGraph)
 
 <div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/workFlow.png" alt="Workflow — pipeline multi-agent LangGraph" width="90%" />
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/mourchid-Enset-Assistant@main/screens/workFlow.png" alt="Workflow — pipeline multi-agent LangGraph" width="90%" />
   <br/>
   <sub><b>Workflow</b> — Visualisation de la trace d'exécution par <code>conversationId</code> · Pipeline complet (classifyQuery → RAG → agent → citations → verification → finalResponse) · Aperçu JSON de l'état.</sub>
 </div>
@@ -130,7 +130,7 @@ Le **backend Python** est géré avec **[uv](https://docs.astral.sh/uv/)** (`pyp
 ### 📊 Tableau de bord
 
 <div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/dashboard.png" alt="Tableau de bord — statistiques d'usage" width="90%" />
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/mourchid-Enset-Assistant@main/screens/dashboard.png" alt="Tableau de bord — statistiques d'usage" width="90%" />
   <br/>
   <sub><b>Dashboard</b> — Statistiques d'utilisation · Modèles actifs (LLM, embeddings, base vectorielle) · Historique des dernières questions.</sub>
 </div>
@@ -140,7 +140,7 @@ Le **backend Python** est géré avec **[uv](https://docs.astral.sh/uv/)** (`pyp
 ### 📝 Résumé structuré de documents
 
 <div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/resumedocsEnset.png" alt="Résumé structuré — points clés et obligations" width="90%" />
+  <img src="https://cdn.jsdelivr.net/gh/ahmed-douyry/mourchid-Enset-Assistant@main/screens/resumedocsEnset.png" alt="Résumé structuré — points clés et obligations" width="90%" />
   <br/>
   <sub><b>Résumé docs</b> — Synthèse générée par le LLM · Points clés, obligations, risques et articles de référence via <code>POST /api/summarize</code>.</sub>
 </div>
@@ -401,10 +401,10 @@ git init
 git branch -M main
 
 # 2. Créer le dépôt sur GitHub (remplacez le token par le vôtre)
-#    Ou créez-le manuellement sur https://github.com/new (nom : enset-assistant, public)
+#    Ou créez-le manuellement sur https://github.com/new (nom : mourchid-Enset-Assistant, public)
 
 # 3. Ajouter le remote et pousser
-git remote add origin https://github.com/ahmed-douyry/enset-assistant.git
+git remote add origin https://github.com/ahmed-douyry/mourchid-Enset-Assistant.git
 git add README.md screens/ docs/ frontend/ backend/ docker-compose.yml .env.example .gitignore
 git commit -m "feat: initial commit — Mourchid assistant académique ENSET"
 git push -u origin main
@@ -413,7 +413,7 @@ git push -u origin main
 Une fois poussé, les 7 captures apparaissent automatiquement dans le README via :
 
 ```
-https://cdn.jsdelivr.net/gh/ahmed-douyry/enset-assistant@main/screens/<fichier>.png
+https://cdn.jsdelivr.net/gh/ahmed-douyry/mourchid-Enset-Assistant@main/screens/<fichier>.png
 ```
 
 ---
