@@ -1,0 +1,51 @@
+@startuml sequence_chat
+' Diagramme de séquence --- flux de chat avec streaming SSE multi-agent
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam sequence {
+  ArrowColor #6B21A8
+  LifeLineBorderColor #9CA3AF
+  LifeLineBackgroundColor #F3E8FF
+  ParticipantBackgroundColor #F3E8FF
+  ParticipantBorderColor #6B21A8
+  ActorBackgroundColor #F3E8FF
+  ActorBorderColor #6B21A8
+}
+
+actor "Étudiant" as U
+participant "React UI" as R
+participant "FastAPI" as FA
+participant "LangGraph" as LG
+database "Qdrant" as Q
+participant "Ollama" as O
+
+U -> R : saisie / dictée vocale
+R -> FA : POST /api/chat/stream
+activate FA
+FA -> LG : graph.ainvoke()
+activate LG
+
+LG -> O : classifyQuery
+O --> LG : intent (JSON)
+
+LG -> Q : retrieveDocuments
+Q --> LG : top-k chunks
+
+note over LG : rerankDocuments\nrouteToSpecializedAgent
+
+LG -> O : agent spécialisé (réponse)
+O --> LG : réponse brouillon
+
+LG -> O : verification (fidélité)
+O --> LG : confidenceScore
+
+note over LG : citationGeneration
+LG --> FA : état + workflowTrace
+deactivate LG
+
+FA -->> R : phases SSE (analyze/search/verify)
+FA -->> R : tokens streaming (typewriter)
+deactivate FA
+R -> U : affichage UI + panneau sources
+
+@enduml

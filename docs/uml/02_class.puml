@@ -1,0 +1,80 @@
+@startuml class_diagram
+' Diagramme de classes --- modèles de données de l'API Mourchid
+!pragma layout smetana
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam ArrowColor #6B21A8
+skinparam class {
+  BackgroundColor #F3E8FF
+  BorderColor #6B21A8
+  HeaderBackgroundColor #6B21A8
+  FontColor #1F2937
+  AttributeFontColor #1F2937
+}
+hide circle
+
+class ChatRequest {
+  + message : str
+  + mode : str
+  + conversationId : str
+  --
+  + validate()
+}
+
+class ChatResponse {
+  + answer : str
+  + queryType : str
+  + confidenceScore : float
+  + citations : list
+  --
+  + toJSON()
+}
+
+class CitationItem {
+  + documentTitle : str
+  + excerpt : str
+  + relevanceScore : float
+}
+
+class QuizRequest {
+  + filiere : str
+  + count : int
+  + difficulty : str
+}
+
+class QuizResponse {
+  + filiere : str
+  + questions : list
+}
+
+class QuizQuestion {
+  + question : str
+  + options : list[str]
+  + correctIndex : int
+  + explanation : str
+}
+
+class DocumentItem {
+  + documentId : str
+  + filename : str
+  + status : str
+  + chunkCount : int
+}
+
+class LegalGraphState {
+  + userQuery : str
+  + queryType : str
+  + draftAnswer : str
+  + confidenceScore : float
+  + workflowTrace : list
+  --
+  + traceEvent()
+}
+
+ChatRequest --> ChatResponse : produit >
+ChatResponse "1" o-- "*" CitationItem : contient >
+QuizRequest --> QuizResponse : produit >
+QuizResponse "1" o-- "*" QuizQuestion : contient >
+ChatRequest ..> LegalGraphState : alimente >
+
+@enduml

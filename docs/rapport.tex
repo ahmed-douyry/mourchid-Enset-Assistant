@@ -12,7 +12,7 @@
 
 \usepackage{graphicx}
 \usepackage{grffile}
-\graphicspath{{../screens/}{images/}}
+\graphicspath{{../screens/}{images/}{uml/}}
 \usepackage{float}
 \usepackage{xcolor}
 \usepackage{colortbl}
@@ -33,8 +33,11 @@
 \usepackage{xurl}
 \urlstyle{same}
 
-\XeTeXlinebreaklocale "fr"
-\XeTeXlinebreakskip = 0pt plus 1pt
+% Retour à la ligne optimal en français (XeLaTeX uniquement)
+\ifdefined\XeTeXlinebreaklocale
+  \XeTeXlinebreaklocale "fr"
+  \XeTeXlinebreakskip = 0pt plus 1pt
+\fi
 \emergencystretch=2.5em
 \setlength{\hfuzz}{3pt}
 \newcommand{\longpath}[1]{\texttt{\footnotesize\hyphenchar\font=`\-\relax #1}}
@@ -58,9 +61,9 @@
 \newcommand{\typedoc}{Rapport de Projet}
 \newcommand{\sujet}{Mourchid : Assistant académique ENSET\\[0.2em]multi-agent avec RAG agentique}
 \newcommand{\equipe}{%
-  Ahmed DOUYRY%
+  Ahmed DOUYRY\\[0.15cm]Yazid ESSOKTANI\\[0.15cm]Imane MEKKAOUI%
 }
-\newcommand{\encadrant}{---}
+\newcommand{\encadrant}{Oumaima AGHERAI}
 \newcommand{\dateRendu}{Juin 2026}
 \newcommand{\repoGit}{https://github.com/ahmed-douyry/enset-assistant}
 
@@ -314,6 +317,19 @@
   \end{tcolorbox}%
 }
 
+% Commande UML : titre coloré + liste d'attributs
+% #2 n'est PAS entouré de {} : \\ peut agir comme saut de ligne de tableau
+\newcommand{\umlbox}[2]{%
+  \setlength{\arrayrulewidth}{0.4pt}%
+  \begin{tabular}{|>{\ttfamily\scriptsize}l|}
+    \hline
+    \cellcolor{mypurple}\textcolor{white}{\sffamily\bfseries\scriptsize #1}\\
+    \hline
+    #2\\
+    \hline
+  \end{tabular}%
+}
+
 \newcommand{\screenshot}[3]{%
   \begin{figure}[H]
     \centering
@@ -540,206 +556,32 @@ Les étudiants souhaitant intégrer l'ENSET Mohammedia ou déjà inscrits font f
 
 \begin{figure}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-  font=\sffamily\small,
-  actor/.style={draw=mypurple, rectangle, rounded corners=4pt, fill=mypurplelight!40, minimum width=2.2cm, minimum height=0.65cm, align=center},
-  usecase/.style={draw=mypurple!70, ellipse, fill=mypurplelight!25, minimum width=3.6cm, minimum height=0.7cm, align=center, font=\sffamily\scriptsize},
-  boundary/.style={draw=gray!50, dashed, rounded corners=8pt},
-  asso/.style={->, mypurple!70, thick},
-  inc/.style={->, gray, dashed},
-]
-  % Acteurs
-  \node[actor] (etudiant) at (-5.5, 1) {Étudiant /\\Candidat};
-  \node[actor] (admin) at (-5.5, -5.5) {Administrateur};
-  \node[actor] (llm) at (9, 1) {LLM\\(Ollama)};
-  \node[actor] (whisper) at (9, -1.5) {Whisper};
-  \node[actor] (qdrant) at (9, -4) {Qdrant};
-
-  % Système — rectangle
-  \draw[boundary, fill=lightbg] (-3.2, 3) rectangle (6.8, -7.5);
-  \node[sffamily\bfseries\color{mypurple}, anchor=north west] at (-3.0, 2.8) {\textbf{Système Mourchid}};
-
-  % Cas d'utilisation — étudiant
-  \node[usecase] (chat)    at (1.8,  2.2) {Poser une question\\académique};
-  \node[usecase] (quiz)    at (1.8,  0.5) {S'entraîner au quiz\\concours};
-  \node[usecase] (audio)   at (1.8, -1.2) {Utiliser la dictée\\vocale};
-  \node[usecase] (resume)  at (1.8, -2.9) {Consulter le résumé\\d'un document};
-  \node[usecase] (workflow) at (1.8, -4.5) {Visualiser le workflow\\multi-agent};
-
-  % Cas d'utilisation — admin
-  \node[usecase] (upload)  at (1.8, -6.2) {Charger et indexer\\des documents};
-
-  % Associations
-  \draw[asso] (etudiant) -- (chat);
-  \draw[asso] (etudiant) -- (quiz);
-  \draw[asso] (etudiant) -- (audio);
-  \draw[asso] (etudiant) -- (resume);
-  \draw[asso] (etudiant) -- (workflow);
-  \draw[asso] (admin) -- (upload);
-
-  % Inclusions
-  \draw[inc] (chat) -- node[above, font=\tiny\itshape]{<<include>>} (llm);
-  \draw[inc] (quiz) -- node[above, font=\tiny\itshape, sloped]{<<include>>} (llm);
-  \draw[inc] (audio) -- node[above, font=\tiny\itshape]{<<include>>} (whisper);
-  \draw[inc] (chat) -- node[above, font=\tiny\itshape, sloped]{<<include>>} (qdrant);
-  \draw[inc] (upload) -- node[below, font=\tiny\itshape, sloped]{<<include>>} (qdrant);
-\end{tikzpicture}%
-}
-\caption{Diagramme de cas d'utilisation --- système Mourchid.}
+\includegraphics[width=\textwidth]{uml/use_case.png}
+\caption{Diagramme de cas d'utilisation --- système Mourchid (généré avec PlantUML).}
 \end{figure}
 
 \subsection{Diagramme de classes}
 
 \begin{figure}[H]
 \centering
-\resizebox{0.95\textwidth}{!}{%
-\begin{tikzpicture}[
-  font=\sffamily\scriptsize,
-  cls/.style={draw=mypurple, rectangle split, rectangle split parts=3,
-    fill=mypurplelight!30, rounded corners=3pt,
-    rectangle split part fill={mypurple!80, mypurplelight!25, white},
-    minimum width=3.4cm, align=left},
-  rel/.style={->, mypurple!70, thick},
-  comp/.style={diamond, fill=mypurple!60, draw=mypurple, scale=0.6},
-]
-  \node[cls] (chatreq) at (0, 0) {
-    \nodepart[text=white, font=\sffamily\bfseries\scriptsize]{one} ChatRequest
-    \nodepart{two} + message: str\\ + mode: str\\ + conversationId: str
-    \nodepart{three} + validate()
-  };
-
-  \node[cls] (chatresp) at (6, 0) {
-    \nodepart[text=white, font=\sffamily\bfseries\scriptsize]{one} ChatResponse
-    \nodepart{two} + answer: str\\ + queryType: str\\ + confidenceScore: float\\ + citations: list
-    \nodepart{three} + toJSON()
-  };
-
-  \node[cls] (quizreq) at (0, -5) {
-    \nodepart[text=white, font=\sffamily\bfseries\scriptsize]{one} QuizRequest
-    \nodepart{two} + filiere: str\\ + count: int\\ + difficulty: str
-    \nodepart{three}
-  };
-
-  \node[cls] (quizresp) at (6, -5) {
-    \nodepart[text=white, font=\sffamily\bfseries\scriptsize]{one} QuizResponse
-    \nodepart{two} + filiere: str\\ + questions: list[QuizQuestion]
-    \nodepart{three}
-  };
-
-  \node[cls] (quizq) at (6, -9) {
-    \nodepart[text=white, font=\sffamily\bfseries\scriptsize]{one} QuizQuestion
-    \nodepart{two} + question: str\\ + options: list[str]\\ + correctIndex: int\\ + explanation: str
-    \nodepart{three}
-  };
-
-  \node[cls] (docitem) at (0, -9) {
-    \nodepart[text=white, font=\sffamily\bfseries\scriptsize]{one} DocumentItem
-    \nodepart{two} + documentId: str\\ + filename: str\\ + status: str\\ + chunkCount: int
-    \nodepart{three}
-  };
-
-  \node[cls] (citation) at (12, -2.5) {
-    \nodepart[text=white, font=\sffamily\bfseries\scriptsize]{one} CitationItem
-    \nodepart{two} + documentTitle: str\\ + excerpt: str\\ + relevanceScore: float
-    \nodepart{three}
-  };
-
-  \node[cls] (graphstate) at (12, -7) {
-    \nodepart[text=white, font=\sffamily\bfseries\scriptsize]{one} LegalGraphState
-    \nodepart{two} + userQuery: str\\ + queryType: str\\ + draftAnswer: str\\ + citations: list\\ + confidenceScore: float\\ + workflowTrace: list
-    \nodepart{three} + traceEvent()
-  };
-
-  \draw[rel] (chatreq) -- node[above, font=\tiny\itshape]{produit} (chatresp);
-  \draw[rel] (quizreq) -- node[above, font=\tiny\itshape]{produit} (quizresp);
-  \draw[rel] (quizresp) -- node[right, font=\tiny\itshape]{contient} (quizq);
-  \draw[rel] (chatresp) -- node[right, font=\tiny\itshape]{contient} (citation);
-  \draw[rel] (chatreq) -- node[right, font=\tiny\itshape]{alimente} (graphstate);
-\end{tikzpicture}%
-}
-\caption{Diagramme de classes simplifié --- modèles de données de l'API Mourchid.}
+\includegraphics[width=\textwidth]{uml/class_diagram.png}
+\caption{Diagramme de classes --- modèles de données de l'API Mourchid (généré avec PlantUML).}
 \end{figure}
 
 \subsection{Diagramme de séquence --- flux de chat (streaming SSE)}
 
 \begin{figure}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-  x=1.05cm, y=0.5cm,
-  font=\sffamily\scriptsize,
-  actor/.style={rectangle, rounded corners=2pt, draw=mypurple!75, fill=mypurplelight!45,
-    minimum width=1.5cm, minimum height=0.55cm, align=center, inner sep=2pt},
-  life/.style={draw=gray!50, densely dashed, line width=0.45pt},
-  call/.style={-{Stealth[length=1.8mm]}, line width=0.65pt, mypurple},
-  reply/.style={-{Stealth[length=1.8mm]}, line width=0.5pt, dashed, gray!65},
-  lbl/.style={font=\tiny, fill=white, inner sep=1pt}
-]
-\node[actor] (u)  at (0,0)   {Étudiant};
-\node[actor] (r)  at (2.5,0) {React\\UI};
-\node[actor] (fa) at (5,0)   {FastAPI};
-\node[actor] (lg) at (7.5,0) {Lang\\Graph};
-\node[actor] (q)  at (10,0)  {Qdrant};
-\node[actor] (o)  at (12.5,0){Ollama};
-
-\foreach \x in {0,2.5,5,7.5,10,12.5}
-  \draw[life] (\x,0) -- (\x,-24);
-
-\draw[call]  (0,-1)  -- node[lbl,above,sloped]{1. saisie / micro} (2.5,-1);
-\draw[call]  (2.5,-2.5) -- node[lbl,above,sloped]{2. POST /api/chat/stream} (5,-2.5);
-\draw[call]  (5,-4)  -- node[lbl,above,sloped]{3. graph.ainvoke()} (7.5,-4);
-\draw[call]  (7.5,-5.5) -- node[lbl,above,sloped]{4. classifyQuery → Ollama} (12.5,-5.5);
-\draw[reply] (12.5,-6.5) -- node[lbl,below,sloped]{intent JSON} (7.5,-6.5);
-\draw[call]  (7.5,-8)  -- node[lbl,above,sloped]{5. retrieveDocuments → Qdrant} (10,-8);
-\draw[reply] (10,-9)   -- node[lbl,below,sloped]{top-k chunks} (7.5,-9);
-\draw[call]  (7.5,-10.5) -- node[lbl,above,sloped]{6. agent spécialisé → Ollama} (12.5,-10.5);
-\draw[reply] (12.5,-11.5) -- node[lbl,below,sloped]{réponse brouillon} (7.5,-11.5);
-\draw[call]  (7.5,-13) -- node[lbl,above,sloped]{7. verification → Ollama} (12.5,-13);
-\draw[reply] (12.5,-14) -- node[lbl,below,sloped]{score fidélité} (7.5,-14);
-\draw[reply] (7.5,-15.5) -- node[lbl,below,sloped]{état + trace} (5,-15.5);
-\draw[call]  (5,-17)  -- node[lbl,above,sloped]{8. phases SSE (analyze/search/verify…)} (2.5,-17);
-\draw[call]  (5,-18.5) -- node[lbl,above,sloped]{9. tokens streaming (typewriter)} (2.5,-18.5);
-\draw[reply] (2.5,-20) -- node[lbl,below,sloped]{10. affichage UI + panneau sources} (0,-20);
-\node[font=\tiny\itshape, text=gray!70, align=center] at (6.25,-22.5)
-  {Nœuds internes : rerankDocuments $\to$ routeToSpecializedAgent $\to$ citationGeneration};
-\end{tikzpicture}%
-}
-\caption{Diagramme de séquence UML --- parcours chat avec streaming SSE multi-agent.}
+\includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{uml/sequence_chat.png}
+\caption{Diagramme de séquence UML --- parcours chat avec streaming SSE multi-agent (généré avec PlantUML).}
 \end{figure}
 
 \subsection{Diagramme de séquence --- dictée vocale (Whisper)}
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[
-  x=1.2cm, y=0.55cm,
-  font=\sffamily\scriptsize,
-  actor/.style={rectangle, rounded corners=2pt, draw=mypurple!75, fill=mypurplelight!45,
-    minimum width=1.5cm, minimum height=0.55cm, align=center},
-  life/.style={draw=gray!40, densely dashed},
-  call/.style={-{Stealth[length=1.8mm]}, mypurple, thick},
-  reply/.style={-{Stealth[length=1.8mm]}, dashed, gray!70},
-  lbl/.style={font=\tiny, fill=white, inner sep=1pt}
-]
-\node[actor] (u)  at (0,0)  {Étudiant};
-\node[actor] (ui) at (3,0)  {React\\(MediaRecorder)};
-\node[actor] (fa) at (6.5,0){FastAPI\\(Transcribe)};
-\node[actor] (w)  at (10,0) {Whisper\\(local)};
-
-\foreach \x in {0,3,6.5,10} \draw[life] (\x,0) -- (\x,-14);
-
-\draw[call]  (0,-1.5)  -- node[lbl,above]{1. clic micro} (3,-1.5);
-\draw[call]  (3,-3)    -- node[lbl,above]{2. getUserMedia(audio)} (3,-3);
-\draw[call]  (3,-4.5)  -- node[lbl,above]{3. barre de fréquence (Web Audio API)} (3,-4.5);
-\draw[call]  (0,-6)    -- node[lbl,above]{4. clic stop} (3,-6);
-\draw[call]  (3,-7.5)  -- node[lbl,above,sloped]{5. POST /api/transcribe (blob audio)} (6.5,-7.5);
-\draw[call]  (6.5,-9)  -- node[lbl,above,sloped]{6. Whisper.transcribe(tmp.webm)} (10,-9);
-\draw[reply] (10,-10.5) -- node[lbl,below,sloped]{texte transcrit} (6.5,-10.5);
-\draw[reply] (6.5,-12) -- node[lbl,below,sloped]{7. \{text: "..."\}} (3,-12);
-\draw[reply] (3,-13.5) -- node[lbl,below]{8. insertion dans textarea} (0,-13.5);
-\end{tikzpicture}
-\caption{Diagramme de séquence --- dictée vocale et transcription Whisper côté serveur.}
+\includegraphics[width=0.85\textwidth]{uml/sequence_voice.png}
+\caption{Diagramme de séquence --- dictée vocale et transcription Whisper côté serveur (généré avec PlantUML).}
 \end{figure}
 
 % =============================================================================

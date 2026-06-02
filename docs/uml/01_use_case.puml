@@ -1,0 +1,48 @@
+@startuml use_case
+' Diagramme de cas d'utilisation --- Mourchid (Assistant académique ENSET)
+!pragma layout smetana
+left to right direction
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam ArrowColor #6B21A8
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor #F3E8FF
+  BorderColor #6B21A8
+  FontColor #1F2937
+}
+skinparam actor {
+  BackgroundColor #F3E8FF
+  BorderColor #6B21A8
+}
+
+actor "Étudiant /\nCandidat" as etudiant
+actor "Administrateur" as admin
+actor "LLM (Ollama)" as llm
+actor "Whisper" as whisper
+actor "Qdrant" as qdrant
+
+rectangle "Système Mourchid" {
+  usecase "Poser une question\nacadémique" as UC_chat
+  usecase "S'entraîner au quiz\nconcours" as UC_quiz
+  usecase "Utiliser la dictée\nvocale" as UC_audio
+  usecase "Consulter le résumé\nd'un document" as UC_resume
+  usecase "Visualiser le workflow\nmulti-agent" as UC_workflow
+  usecase "Charger et indexer\ndes documents" as UC_upload
+}
+
+etudiant --> UC_chat
+etudiant --> UC_quiz
+etudiant --> UC_audio
+etudiant --> UC_resume
+etudiant --> UC_workflow
+admin --> UC_upload
+
+UC_chat ..> llm : <<include>>
+UC_chat ..> qdrant : <<include>>
+UC_quiz ..> llm : <<include>>
+UC_audio ..> whisper : <<include>>
+UC_upload ..> qdrant : <<include>>
+
+@enduml

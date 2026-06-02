@@ -1,0 +1,36 @@
+@startuml sequence_voice
+' Diagramme de séquence --- dictée vocale et transcription Whisper côté serveur
+skinparam backgroundColor transparent
+skinparam shadowing false
+skinparam sequence {
+  ArrowColor #6B21A8
+  LifeLineBorderColor #9CA3AF
+  LifeLineBackgroundColor #F3E8FF
+  ParticipantBackgroundColor #F3E8FF
+  ParticipantBorderColor #6B21A8
+  ActorBackgroundColor #F3E8FF
+  ActorBorderColor #6B21A8
+}
+
+actor "Étudiant" as U
+participant "React\n(MediaRecorder)" as R
+participant "FastAPI\n(/transcribe)" as FA
+participant "Whisper\n(local)" as W
+
+U -> R : clic micro
+activate R
+R -> R : getUserMedia(audio)
+R -> R : barre de fréquence (Web Audio API)
+U -> R : clic stop
+R -> FA : POST /api/transcribe (blob audio)
+deactivate R
+activate FA
+FA -> W : Whisper.transcribe(tmp.webm)
+activate W
+W --> FA : texte transcrit
+deactivate W
+FA --> R : { text : "..." }
+deactivate FA
+R -> U : insertion dans le textarea
+
+@enduml
