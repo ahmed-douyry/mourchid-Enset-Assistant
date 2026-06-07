@@ -10,7 +10,7 @@ from app.config import get_settings
 
 
 def _path() -> Path:
-    p = Path(get_settings().data_dir) / "processed" / "dashboard_stats.json"
+    p = get_settings().resolved_data_dir / "processed" / "dashboard_stats.json"
     p.parent.mkdir(parents=True, exist_ok=True)
     return p
 

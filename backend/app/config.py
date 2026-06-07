@@ -1,10 +1,13 @@
 """Application configuration (local-first, open-source defaults)."""
 
 from functools import lru_cache
+from pathlib import Path
 from typing import Literal
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+_BACKEND_ROOT = Path(__file__).resolve().parent.parent
 
 
 class Settings(BaseSettings):
@@ -58,6 +61,14 @@ class Settings(BaseSettings):
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @property
+    def resolved_data_dir(self) -> Path:
+        """Chemin absolu du répertoire data, indépendant du cwd uvicorn."""
+        p = Path(self.data_dir)
+        if p.is_absolute():
+            return p
+        return (_BACKEND_ROOT / p).resolve()
 
     def ollama_request_headers(self) -> dict[str, str]:
         """En-têtes pour l'API Ollama (modèles cloud : Bearer OLLAMA_API_KEY)."""

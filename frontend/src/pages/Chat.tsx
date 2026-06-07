@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { jsPDF } from "jspdf";
 import { Copy, FileDown, RotateCcw } from "lucide-react";
@@ -14,10 +15,21 @@ import type { ChatMode, ChatResponse } from "@/types";
 
 type Turn = { role: "user" | "assistant"; text: string; data?: ChatResponse };
 
+const CONVERSATION_STORAGE_KEY = "mourchid.conversationId";
+
+function readStoredConversationId(): string | undefined {
+  try {
+    return sessionStorage.getItem(CONVERSATION_STORAGE_KEY) || undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 export function Chat() {
   const [busy, setBusy] = useState(false);
   const [turns, setTurns] = useState<Turn[]>([]);
   const [last, setLast] = useState<ChatResponse | null>(null);
+  const [conversationId, setConversationId] = useState<string | undefined>(readStoredConversationId);
   const [err, setErr] = useState<string | null>(null);
   const [phase, setPhase] = useState<string | null>(null);
   const [streamingText, setStreamingText] = useState("");
@@ -38,7 +50,7 @@ export function Chat() {
     setTurns((t) => [...t, { role: "user", text: message }]);
 
     await streamChat(
-      { message, mode, conversationId: last?.conversationId || undefined },
+      { message, mode, conversationId: conversationId || last?.conversationId || undefined },
       {
         onPhase: (p) => setPhase(p),
         onStreamStart: () => {
@@ -48,6 +60,14 @@ export function Chat() {
         onToken: (chunk) => setStreamingText((s) => s + chunk),
         onDone: (data) => {
           setLast(data);
+          if (data.conversationId) {
+            setConversationId(data.conversationId);
+            try {
+              sessionStorage.setItem(CONVERSATION_STORAGE_KEY, data.conversationId);
+            } catch {
+              /* ignore storage errors */
+            }
+          }
           setTurns((t) => [...t, { role: "assistant", text: data.answer, data }]);
           setStreamingText("");
           setIsStreaming(false);
@@ -149,6 +169,12 @@ export function Chat() {
                     onClick={() => {
                       setTurns([]);
                       setLast(null);
+                      setConversationId(undefined);
+                      try {
+                        sessionStorage.removeItem(CONVERSATION_STORAGE_KEY);
+                      } catch {
+                        /* ignore */
+                      }
                     }}
                   >
                     <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
@@ -156,6 +182,18 @@ export function Chat() {
                   </Button>
                 </div>
                 <LegalAnswer data={last} compact />
+                {conversationId ? (
+                  <div className="rounded-2xl border border-border/50 bg-surface-muted/40 px-4 py-3 text-xs">
+                    <p className="font-medium text-foreground">Trace workflow sauvegardée</p>
+                    <p className="mt-1 break-all font-mono text-[10px] text-muted">{conversationId}</p>
+                    <Link
+                      to={`/workflow?id=${encodeURIComponent(conversationId)}`}
+                      className="mt-2 inline-flex text-xs font-semibold text-violet-brand hover:underline"
+                    >
+                      Voir le pipeline complet →
+                    </Link>
+                  </div>
+                ) : null}
                 {last.queryType === "procedure" ? <ChecklistView text={last.answer} /> : null}
               </div>
             ) : (

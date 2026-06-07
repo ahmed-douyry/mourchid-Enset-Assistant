@@ -145,8 +145,21 @@ export async function deleteDocument(documentId: string) {
 }
 
 export async function getWorkflowTrace(conversationId: string) {
-  const res = await fetch(`${API}/api/workflow/trace/${conversationId}`);
+  const res = await fetch(`${API}/api/workflow/trace/${encodeURIComponent(conversationId)}`);
   return parse<{ workflowTrace: unknown[]; state: Record<string, unknown> }>(res);
+}
+
+export type WorkflowTraceSummary = {
+  conversationId: string;
+  savedAt?: string | null;
+  queryPreview?: string;
+  queryType?: string;
+  stepCount?: number;
+};
+
+export async function listWorkflowTraces(limit = 30): Promise<WorkflowTraceSummary[]> {
+  const res = await fetch(`${API}/api/workflow/traces?limit=${limit}`);
+  return parse<WorkflowTraceSummary[]>(res);
 }
 
 export async function postCompare(textA: string, textB: string) {

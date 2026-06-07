@@ -4,12 +4,15 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import re
 import uuid
 from collections.abc import AsyncIterator
 from typing import Any
 
 from app.config import get_settings
+
+logger = logging.getLogger(__name__)
 from app.graph.legal_workflow import graph
 from app.mcp.tools import check_official_source
 from app.models.schemas import ChatRequest, ChatResponse, CitationItem, WorkflowTraceItem
@@ -71,7 +74,15 @@ async def run_chat(body: ChatRequest) -> ChatResponse:
     }
     result = await graph.ainvoke(initial)
     trace = result.get("workflow_trace") or []
-    workflow_service.save_trace(conv, trace, {k: v for k, v in result.items() if k != "workflow_trace"})
+    try:
+        workflow_service.save_trace(
+            conv,
+            trace,
+            {k: v for k, v in result.items() if k != "workflow_trace"},
+        )
+    except OSError as e:
+        logger.exception("Impossible de persister la trace workflow pour %s", conv)
+        raise RuntimeError(f"Échec de sauvegarde de la trace workflow : {e}") from e
 
     vr = result.get("verification_result") or {}
     verified_ok = vr.get("status") != "failed"

@@ -16,7 +16,7 @@ from app.rag.vector_store import get_vector_store
 
 
 def _registry_path(settings: Settings) -> Path:
-    return Path(settings.data_dir) / "processed" / "documents_registry.json"
+    return settings.resolved_data_dir / "processed" / "documents_registry.json"
 
 
 def load_registry(settings: Settings) -> dict[str, Any]:

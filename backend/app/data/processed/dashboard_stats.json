@@ -1,13 +1,45 @@
 {
-  "questions": 6,
-  "documents_indexed": 0,
+  "questions": 14,
+  "documents_indexed": 7,
   "domains": {
-    "legal_question": 4,
-    "procedure": 2
+    "legal_question": 11,
+    "procedure": 3
   },
-  "verified_passed": 6,
-  "verified_total": 6,
+  "verified_passed": 8,
+  "verified_total": 14,
   "last_queries": [
+    {
+      "query": "Quelles sont les filières du cycle ingénieur de l'ENSET ?",
+      "type": "legal_question"
+    },
+    {
+      "query": "Quelles sont les filières du cycle ingénieur de l'ENSET ?",
+      "type": "legal_question"
+    },
+    {
+      "query": "Quelles sont les filières du cycle ingénieur de l'ENSET ?",
+      "type": "legal_question"
+    },
+    {
+      "query": "Salut ! Comment s'inscrire à l'enset ?",
+      "type": "procedure"
+    },
+    {
+      "query": "Quelles sont les filières du cycle ingénieur de l'ENSET ?",
+      "type": "legal_question"
+    },
+    {
+      "query": "Quelles sont les filières du cycle ingénieur de l'ENSET ?",
+      "type": "legal_question"
+    },
+    {
+      "query": "Quelles sont les filières du cycle ingénieur de l'ENSET ?",
+      "type": "legal_question"
+    },
+    {
+      "query": "Quelles sont les filières du cycle ingénieur de l'ENSET ?",
+      "type": "legal_question"
+    },
     {
       "query": "Quelles sont les filières du cycle ingénieur de l'ENSET ?",
       "type": "legal_question"

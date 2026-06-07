@@ -20,6 +20,7 @@ services:
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
       - LLM_MODEL=${LLM_MODEL:-gpt-oss:120b-cloud}
       - EMBEDDING_MODEL=${EMBEDDING_MODEL:-intfloat/multilingual-e5-base}
+      - DATA_DIR=./app/data
       - CORS_ORIGINS=http://localhost:5173,http://frontend:5173
     volumes:
       - doc_raw:/app/app/data/raw

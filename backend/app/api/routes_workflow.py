@@ -1,10 +1,15 @@
 """Routes workflow / traces."""
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 
 from app.services import workflow_service
 
 router = APIRouter(tags=["workflow"])
+
+
+@router.get("/workflow/traces")
+async def list_workflow_traces(limit: int = Query(default=30, ge=1, le=100)) -> list[dict]:
+    return workflow_service.list_traces(limit=limit)
 
 
 @router.get("/workflow/trace/{conversation_id}")

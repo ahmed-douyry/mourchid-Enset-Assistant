@@ -1,121 +1,100 @@
 {
   "documents": {
-    "sample_attestation_demo": {
-      "filename": "attestation_demo.md",
-      "path": "/home/douyry/enset-assistant/backend/app/data/samples/attestation_demo.md",
+    "7f8e7f84-ac2d-446d-85d8-ef46d18ecb26": {
+      "filename": "7f8e7f84-ac2d-446d-85d8-ef46d18ecb26_vie_etudiante_demo.md",
+      "path": "/home/yazid/Bureau/Mourchid Enset Assistant/backend/app/data/raw/7f8e7f84-ac2d-446d-85d8-ef46d18ecb26_vie_etudiante_demo.md",
       "chunk_count": 1,
       "metadata": {
-        "document_id": "sample_attestation_demo",
-        "filename": "attestation_demo.md",
+        "document_id": "7f8e7f84-ac2d-446d-85d8-ef46d18ecb26",
+        "filename": "7f8e7f84-ac2d-446d-85d8-ef46d18ecb26_vie_etudiante_demo.md",
         "country": "Morocco",
         "language": "fr",
-        "source": "attestation_demo.md",
-        "title": "Attestation Demo",
-        "domain": "scolarite",
-        "document_type": "procedure_demo",
-        "url": "https://www.demo.local/enset-attestation"
+        "source": "7f8e7f84-ac2d-446d-85d8-ef46d18ecb26_vie_etudiante_demo.md",
+        "title": "7f8e7f84-ac2d-446d-85d8-ef46d18ecb26_vie_etudiante_demo"
       },
       "status": "indexed"
     },
-    "sample_bourse_demo": {
-      "filename": "bourse_demo.md",
-      "path": "/home/douyry/enset-assistant/backend/app/data/samples/bourse_demo.md",
+    "98add885-ec97-4bae-8d2a-092a2ef38b01": {
+      "filename": "98add885-ec97-4bae-8d2a-092a2ef38b01_stage_pfe_demo.md",
+      "path": "/home/yazid/Bureau/Mourchid Enset Assistant/backend/app/data/raw/98add885-ec97-4bae-8d2a-092a2ef38b01_stage_pfe_demo.md",
       "chunk_count": 1,
       "metadata": {
-        "document_id": "sample_bourse_demo",
-        "filename": "bourse_demo.md",
+        "document_id": "98add885-ec97-4bae-8d2a-092a2ef38b01",
+        "filename": "98add885-ec97-4bae-8d2a-092a2ef38b01_stage_pfe_demo.md",
         "country": "Morocco",
         "language": "fr",
-        "source": "bourse_demo.md",
-        "title": "Bourse Demo",
-        "domain": "bourses",
-        "document_type": "procedure_demo",
-        "url": "https://www.demo.local/enset-bourse"
+        "source": "98add885-ec97-4bae-8d2a-092a2ef38b01_stage_pfe_demo.md",
+        "title": "98add885-ec97-4bae-8d2a-092a2ef38b01_stage_pfe_demo"
       },
       "status": "indexed"
     },
-    "sample_concours_acces_demo": {
-      "filename": "concours_acces_demo.md",
-      "path": "/home/douyry/enset-assistant/backend/app/data/samples/concours_acces_demo.md",
+    "abf918e4-11ca-4260-a6f3-115bc5468531": {
+      "filename": "abf918e4-11ca-4260-a6f3-115bc5468531_inscription_demo.md",
+      "path": "/home/yazid/Bureau/Mourchid Enset Assistant/backend/app/data/raw/abf918e4-11ca-4260-a6f3-115bc5468531_inscription_demo.md",
       "chunk_count": 1,
       "metadata": {
-        "document_id": "sample_concours_acces_demo",
-        "filename": "concours_acces_demo.md",
+        "document_id": "abf918e4-11ca-4260-a6f3-115bc5468531",
+        "filename": "abf918e4-11ca-4260-a6f3-115bc5468531_inscription_demo.md",
         "country": "Morocco",
         "language": "fr",
-        "source": "concours_acces_demo.md",
-        "title": "Concours Acces Demo",
-        "domain": "admission",
-        "document_type": "procedure_demo",
-        "url": "https://www.demo.local/enset-concours"
+        "source": "abf918e4-11ca-4260-a6f3-115bc5468531_inscription_demo.md",
+        "title": "abf918e4-11ca-4260-a6f3-115bc5468531_inscription_demo"
       },
       "status": "indexed"
     },
-    "sample_filieres_enset_demo": {
-      "filename": "filieres_enset_demo.md",
-      "path": "/home/douyry/enset-assistant/backend/app/data/samples/filieres_enset_demo.md",
+    "47631567-7970-4d86-8f4d-37a9e3bbc617": {
+      "filename": "47631567-7970-4d86-8f4d-37a9e3bbc617_filieres_enset_demo.md",
+      "path": "/home/yazid/Bureau/Mourchid Enset Assistant/backend/app/data/raw/47631567-7970-4d86-8f4d-37a9e3bbc617_filieres_enset_demo.md",
       "chunk_count": 1,
       "metadata": {
-        "document_id": "sample_filieres_enset_demo",
-        "filename": "filieres_enset_demo.md",
+        "document_id": "47631567-7970-4d86-8f4d-37a9e3bbc617",
+        "filename": "47631567-7970-4d86-8f4d-37a9e3bbc617_filieres_enset_demo.md",
         "country": "Morocco",
         "language": "fr",
-        "source": "filieres_enset_demo.md",
-        "title": "Filieres Enset Demo",
-        "domain": "filieres",
-        "document_type": "guide_demo",
-        "url": "https://www.demo.local/enset-filieres"
+        "source": "47631567-7970-4d86-8f4d-37a9e3bbc617_filieres_enset_demo.md",
+        "title": "47631567-7970-4d86-8f4d-37a9e3bbc617_filieres_enset_demo"
       },
       "status": "indexed"
     },
-    "sample_inscription_demo": {
-      "filename": "inscription_demo.md",
-      "path": "/home/douyry/enset-assistant/backend/app/data/samples/inscription_demo.md",
+    "b6c436c6-88b6-49b3-b23a-bb618199faa0": {
+      "filename": "b6c436c6-88b6-49b3-b23a-bb618199faa0_concours_acces_demo.md",
+      "path": "/home/yazid/Bureau/Mourchid Enset Assistant/backend/app/data/raw/b6c436c6-88b6-49b3-b23a-bb618199faa0_concours_acces_demo.md",
       "chunk_count": 1,
       "metadata": {
-        "document_id": "sample_inscription_demo",
-        "filename": "inscription_demo.md",
+        "document_id": "b6c436c6-88b6-49b3-b23a-bb618199faa0",
+        "filename": "b6c436c6-88b6-49b3-b23a-bb618199faa0_concours_acces_demo.md",
         "country": "Morocco",
         "language": "fr",
-        "source": "inscription_demo.md",
-        "title": "Inscription Demo",
-        "domain": "scolarite",
-        "document_type": "procedure_demo",
-        "url": "https://www.demo.local/enset-inscription"
+        "source": "b6c436c6-88b6-49b3-b23a-bb618199faa0_concours_acces_demo.md",
+        "title": "b6c436c6-88b6-49b3-b23a-bb618199faa0_concours_acces_demo"
       },
       "status": "indexed"
     },
-    "sample_stage_pfe_demo": {
-      "filename": "stage_pfe_demo.md",
-      "path": "/home/douyry/enset-assistant/backend/app/data/samples/stage_pfe_demo.md",
+    "1a5f7704-f4d2-4f9d-85c0-8a9697d1c725": {
+      "filename": "1a5f7704-f4d2-4f9d-85c0-8a9697d1c725_bourse_demo.md",
+      "path": "/home/yazid/Bureau/Mourchid Enset Assistant/backend/app/data/raw/1a5f7704-f4d2-4f9d-85c0-8a9697d1c725_bourse_demo.md",
       "chunk_count": 1,
       "metadata": {
-        "document_id": "sample_stage_pfe_demo",
-        "filename": "stage_pfe_demo.md",
+        "document_id": "1a5f7704-f4d2-4f9d-85c0-8a9697d1c725",
+        "filename": "1a5f7704-f4d2-4f9d-85c0-8a9697d1c725_bourse_demo.md",
         "country": "Morocco",
         "language": "fr",
-        "source": "stage_pfe_demo.md",
-        "title": "Stage Pfe Demo",
-        "domain": "stages",
-        "document_type": "procedure_demo",
-        "url": "https://www.demo.local/enset-stage-pfe"
+        "source": "1a5f7704-f4d2-4f9d-85c0-8a9697d1c725_bourse_demo.md",
+        "title": "1a5f7704-f4d2-4f9d-85c0-8a9697d1c725_bourse_demo"
       },
       "status": "indexed"
     },
-    "sample_vie_etudiante_demo": {
-      "filename": "vie_etudiante_demo.md",
-      "path": "/home/douyry/enset-assistant/backend/app/data/samples/vie_etudiante_demo.md",
+    "30989baa-84ab-422c-aa0b-05607b502531": {
+      "filename": "30989baa-84ab-422c-aa0b-05607b502531_attestation_demo.md",
+      "path": "/home/yazid/Bureau/Mourchid Enset Assistant/backend/app/data/raw/30989baa-84ab-422c-aa0b-05607b502531_attestation_demo.md",
       "chunk_count": 1,
       "metadata": {
-        "document_id": "sample_vie_etudiante_demo",
-        "filename": "vie_etudiante_demo.md",
+        "document_id": "30989baa-84ab-422c-aa0b-05607b502531",
+        "filename": "30989baa-84ab-422c-aa0b-05607b502531_attestation_demo.md",
         "country": "Morocco",
         "language": "fr",
-        "source": "vie_etudiante_demo.md",
-        "title": "Vie Etudiante Demo",
-        "domain": "vie_etudiante",
-        "document_type": "guide_demo",
-        "url": "https://www.demo.local/enset-vie-etudiante"
+        "source": "30989baa-84ab-422c-aa0b-05607b502531_attestation_demo.md",
+        "title": "30989baa-84ab-422c-aa0b-05607b502531_attestation_demo"
       },
       "status": "indexed"
     }
